@@ -61,8 +61,9 @@ public class MyBarChart extends Application {
         root.setStyle("-fx-border-width: 1px; -fx-border-color: black");
         root.setBottom(makeToolPanel(canvas));
 
-//    VBox vbox = new VBox(barChart);
-//    Scene scene = new Scene(vbox, 400, 200);
+
+        // we ran the program at this stage; and we are getting bars with different colours; we need it in
+        // the same colour.
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -80,18 +81,26 @@ public class MyBarChart extends Application {
         yAxis.setLabel("Rain");
         BarChart barChart = new BarChart(xAxis, yAxis);
 
-        int NUM_POINTS = 10;
+        int NUM_POINTS = 60;
+        XYChart.Series ds1 = new XYChart.Series(); // one data series- for one colour.
+        ds1.setName("Rain Location # 1");
         for (int i = 0; i < NUM_POINTS; i++) {
-            String key = "2021-01-" + (i+1); // this would get us January 1st upto 10.
-            XYChart.Series dataSeries1 = new XYChart.Series();
-            dataSeries1.setName(key);
-            dataSeries1.getData().add(new XYChart.Data("location", i));
-//            dataSeries1.getData().add(new XYChart.Data("Phone"  , 65));
-//            dataSeries1.getData().add(new XYChart.Data("Tablet"  , 23));
-            barChart.getData().add(dataSeries1);
+            String key = "2021-01-" + (i + 1); // this would get us January 1st upto 10.
+            ds1.setName(key);
+            ds1.getData().add(new XYChart.Data(key, i));
+        }
+        XYChart.Series ds2 = new XYChart.Series();
+        ds2.setName("Rain Location # 2");
+        for (int i = 0; i < NUM_POINTS; i++) {
+            String key = "2021-02-" + (i + 1); // this would get us January 1st upto 10.
+            ds1.setName(key);
+            ds2.getData().add(new XYChart.Data(key, i));
 
         }
+        barChart.getData().add(ds1);
+        barChart.getData().add(ds2);
         return barChart;
+
     }
 
     private Canvas makeCanvas() {
