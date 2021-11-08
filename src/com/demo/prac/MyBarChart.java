@@ -61,12 +61,16 @@ public class MyBarChart extends Application {
         root.setStyle("-fx-border-width: 1px; -fx-border-color: black");
         root.setBottom(makeToolPanel(canvas));
 
+//    VBox vbox = new VBox(barChart);
+//    Scene scene = new Scene(vbox, 400, 200);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Click buttons to add shapes; drag shapes with your mouse");
         stage.setResizable(false);
         stage.show();
     }
+
 
     private BarChart<String, Double> loadMyRainData() { // We created the method,"loadMyRainData()
 // Line 73 to 77 copied from - " http://tutorials.jenkov.com/javafx/barchart.html- Creating a BarChart"
