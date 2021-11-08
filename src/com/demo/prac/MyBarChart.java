@@ -89,6 +89,7 @@ public class MyBarChart extends Application {
             ds1.setName(key);
             ds1.getData().add(new XYChart.Data(key, i));
         }
+
         XYChart.Series ds2 = new XYChart.Series();
         ds2.setName("Rain Location # 2");
         for (int i = 0; i < NUM_POINTS; i++) {
