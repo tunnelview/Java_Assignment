@@ -81,7 +81,7 @@ public class MyBarChart extends Application {
         yAxis.setLabel("Rain");
         BarChart barChart = new BarChart(xAxis, yAxis);
 
-        int NUM_POINTS = 60;
+        int NUM_POINTS = 30;
         XYChart.Series ds1 = new XYChart.Series(); // one data series- for one colour.
         ds1.setName("Rain Location # 1");
         for (int i = 0; i < NUM_POINTS; i++) {
@@ -92,9 +92,9 @@ public class MyBarChart extends Application {
         XYChart.Series ds2 = new XYChart.Series();
         ds2.setName("Rain Location # 2");
         for (int i = 0; i < NUM_POINTS; i++) {
-            String key = "2021-02-" + (i + 1); // this would get us January 1st upto 10.
+            String key = "2021-01-" + (i + 1); // we discovered that the key must be the same, else problem
             ds1.setName(key);
-            ds2.getData().add(new XYChart.Data(key, i));
+            ds2.getData().add(new XYChart.Data(key, 100-i)); // we changed the value here for the 2nd location
 
         }
         barChart.getData().add(ds1);
